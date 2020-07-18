@@ -1,5 +1,5 @@
 **************
-pyDeltaRCM_WMT
+BMI_pyDeltaRCM
 **************
 
 .. image:: https://github.com/DeltaRCM/BMI_pyDeltaRCM/workflows/actions/badge.svg
@@ -9,6 +9,8 @@ pyDeltaRCM_WMT
   :target: https://codecov.io/gh/DeltaRCM/BMI_pyDeltaRCM
 
 Basic Modeling Interface (BMI) wrapper to the pyDeltaRCM model.
+
+**NOTE:** this project is in alpha testing. It is incomplete, unstable, and untested.
 
 
 Documentation
@@ -20,6 +22,8 @@ Documentation
 
 Installation
 ############
+
+**While project is in alpha:** You will need to install `pyDeltaRCM` first, visit that repository and follow installation instructions there.
 
 To install this package into an existing Python 3.x environment, download or clone the repository and run:
 

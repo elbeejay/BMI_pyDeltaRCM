@@ -1,0 +1,8 @@
+pyDeltaRCM
+numpy
+matplotlib
+scipy
+netCDF4
+pyyaml
+numba
+bmipy
