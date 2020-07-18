@@ -1,0 +1,13 @@
+url: https://deltarcm.org/BMI_pyDeltaRCM
+author: Mariela Perignon, Mark Piper, and the DeltaRCM Team
+email: perignon@colorado.edu
+version: 0.1
+summary: "PyDeltaRCM is the Python version of DeltaRCM by Man Liang. DeltaRCM
+  is a parcel-based cellular flux routing and sediment transport model for the
+  formation of river deltas, which belongs to the broad category of rules-based
+  exploratory models. The model has the ability to resolve emergent channel
+  behaviors including channel bifurcation, avulsion, and lateral migration. Sediment
+  transport distinguishes two types of sediment: sand and mud, which have
+  different transport and deposition/erosion rules. Stratigraphy is recorded as
+  the sand fraction in layers. Best usage of DeltaRCM is the investigation of
+  autogenic processes in response to external forcings."
