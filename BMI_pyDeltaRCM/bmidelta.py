@@ -1,22 +1,20 @@
 #! /usr/bin/env python
-import yaml
 import warnings
 warnings.simplefilter('default')
 import tempfile
 
 import numpy as np
-import os
 from bmipy import Bmi
+import yaml
 
 from pyDeltaRCM.model import DeltaModel
 from pyDeltaRCM.shared_tools import write_yaml_config_to_file
 
 from . import utils
 
-"""Basic Model Interface implementation for pyDeltaRCM."""
-
 
 class BmiDelta(Bmi):
+    """Basic Model Interface implementation for pyDeltaRCM."""
 
     _name = 'pyDeltaRCM'
 
@@ -81,7 +79,7 @@ class BmiDelta(Bmi):
         'basin__maximum_subsidence_rate': 'sigma_max',
         'basin__subsidence_start_timestep': 'start_subsidence',
         'basin__opt_stratigraphy': 'save_strata'
-        }
+    }
 
     def __init__(self):
         """Create a BmiDelta model that is ready for initialization."""
@@ -153,8 +151,8 @@ class BmiDelta(Bmi):
             'sea_water__depth': 'm',
             'sea_bottom_surface__elevation': 'm'}
         self._var_loc = {'sea_water_surface__elevation': 'node',
-            'sea_water__depth': 'node',
-            'sea_bottom_surface__elevation': 'node'}
+                         'sea_water__depth': 'node',
+                         'sea_bottom_surface__elevation': 'node'}
         self._grids = {
             0: ['sea_water_surface__elevation'],
             1: ['sea_water__depth'],
@@ -174,7 +172,7 @@ class BmiDelta(Bmi):
         Parameters
         ----------
         time_frac : float
-            Fraction fo a time step.
+            Fraction of a time step.
         """
         time_step = self.get_time_step()
 
@@ -335,7 +333,6 @@ class BmiDelta(Bmi):
                       'Use `get_value_ptr` instead.', DeprecationWarning)
         return self.get_value_ptr(var_name)
 
-
     def get_value(self, var_name):
         """Copy of values.
 
@@ -443,7 +440,7 @@ class BmiDelta(Bmi):
 
     def get_input_item_count(self) -> int:
         """Count of a model's input variables.
-        
+
         Returns
         -------
         int
@@ -453,7 +450,7 @@ class BmiDelta(Bmi):
 
     def get_output_item_count(self) -> int:
         """Count of a model's output variables.
-        
+
         Returns
         -------
         int
@@ -463,12 +460,12 @@ class BmiDelta(Bmi):
 
     def get_var_itemsize(self, name: str) -> int:
         """Get the size (in bytes) of one element of a variable.
-        
+
         Parameters
         ----------
         name : str
             An input or output variable name, a CSDMS Standard Name.
-        
+
         Returns
         -------
         int
@@ -480,15 +477,16 @@ class BmiDelta(Bmi):
         """Get the grid element type that the a given variable is defined on.
 
         .. note::
-            
+
             CSDMS uses the `ugrid conventions`_ to define unstructured grids.
-            .. _ugrid conventions: http://ugrid-conventions.github.io/ugrid-conventions
+
+        .. _ugrid conventions: http://ugrid-conventions.github.io/ugrid-conventions
 
         Parameters
         ----------
         name : str
             An input or output variable name, a CSDMS Standard Name.
-        
+
         Returns
         -------
         str
@@ -501,7 +499,7 @@ class BmiDelta(Bmi):
         """Time units of the model.
 
         .. note:: CSDMS uses the UDUNITS standard from Unidata.
-        
+
         Returns
         -------
         str
@@ -516,21 +514,21 @@ class BmiDelta(Bmi):
             Internally, the pyDeltaRCM model refers to the down-stream
             direction as `x`, which is the row-coordinate of the grid, and
             opposite the BMI specification.
-    
+
         Parameters
         ----------
         grid : int
             A grid identifier.
         x : ndarray of float, shape *(nrows,)*
             A numpy array to hold the x-coordinates of the grid node columns.
-        
+
         Returns
         -------
         ndarray of float
             The input numpy array that holds the grid's column x-coordinates.
         """
         return np.tile(np.arange(self._delta.W)[np.newaxis, :] * self._delta.dx,
-                      (self._delta.L, 1))
+                       (self._delta.L, 1))
 
     def get_grid_y(self, grid: int) -> np.ndarray:
         """Get coordinates of grid nodes in the y direction.
@@ -539,33 +537,33 @@ class BmiDelta(Bmi):
             Internally, the pyDeltaRCM model refers to the cross-stream
             direction as `y`, which is the column-coordinate of the grid, and
             opposite the BMI specification.
-        
+
         Parameters
         ----------
         grid : int
             A grid identifier.
-        
+
         Returns
         -------
         ndarray of float
             The input numpy array that holds the grid's row y-coordinates.
         """
         return np.tile(np.arange(self._delta.L)[:, np.newaxis] * self._delta.dx,
-                      (1, self._delta.W))
+                       (1, self._delta.W))
 
     def get_grid_z(self, grid: int) -> np.ndarray:
         raise NotImplementedError('There is no `z` coordinate in the model.')
 
     def get_grid_node_count(self, grid: int) -> int:
         """Get the number of nodes in the grid.
-        
+
         .. note:: Implemented as an alias to :obj:`get_grid_size`.
 
         Parameters
         ----------
         grid : int
             A grid identifier.
-        
+
         Returns
         -------
         int
@@ -575,7 +573,7 @@ class BmiDelta(Bmi):
 
     def get_grid_edge_count(self, grid: int) -> int:
         """Get the number of edges in the grid.
-        
+
         .. warning:: Not implemented.
 
         Could be computed from the rectilinear type?
@@ -584,7 +582,7 @@ class BmiDelta(Bmi):
         ----------
         grid : int
             A grid identifier.
-        
+
         Returns
         -------
         int
