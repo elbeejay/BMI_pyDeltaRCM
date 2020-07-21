@@ -332,8 +332,6 @@ class TestBmiInputParameters:
         delta.initialize(p)
         assert delta._delta.omega_sfc == 0.3
 
-    # @pytest.mark.xfail(raises=AssertionError, strict=True,
-    #                    reason="upstream bug with hardcoded behavior.")
     def test_set_coeff__under_relaxation__water_flow_config(self, tmp_path):
         """xFail due to upstream (pyDeltaRCM) bug.
         """
@@ -502,6 +500,7 @@ class TestBmiOperations:
     def test_update_until(self, tmp_path):
         filename = 'user_parameters.yaml'
         p, f = create_temporary_file(tmp_path, filename)
+        write_parameter_to_file(f, 'model__random_seed', 42)
         write_parameter_to_file(f, 'model_output__out_dir', tmp_path / 'out_dir')
         f.close()
         delta = BmiDelta()
