@@ -36,6 +36,7 @@ class BmiDelta(Bmi):
 
     _input_vars = {
         'model_output__out_dir': 'out_dir',
+        'model__random_seed': 'seed',
         'model_grid__length': 'Length',
         'model_grid__width': 'Width',
         'model_grid__cell_size': 'dx',

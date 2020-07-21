@@ -42,6 +42,16 @@ class TestBmiInputParameters:
         delta.initialize(p)
         assert 'changed_dir_name' in delta._delta.out_dir
 
+    def test_set_model__random_seed(self, tmp_path):
+        filename = 'user_parameters.yaml'
+        p, f = create_temporary_file(tmp_path, filename)
+        write_parameter_to_file(f, 'model__random_seed', 42)
+        write_parameter_to_file(f, 'model_output__out_dir', tmp_path / 'out_dir')
+        f.close()
+        delta = BmiDelta()
+        delta.initialize(p)
+        assert delta._delta.seed == 42
+
     def test_set_model_grid__length_config(self, tmp_path):
         filename = 'user_parameters.yaml'
         p, f = create_temporary_file(tmp_path, filename)
