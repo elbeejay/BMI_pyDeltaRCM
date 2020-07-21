@@ -322,8 +322,8 @@ class TestBmiInputParameters:
         delta.initialize(p)
         assert delta._delta.omega_sfc == 0.3
 
-    @pytest.mark.xfail(raises=AssertionError, strict=True,
-                       reason="upstream bug with hardcoded behavior.")
+    # @pytest.mark.xfail(raises=AssertionError, strict=True,
+    #                    reason="upstream bug with hardcoded behavior.")
     def test_set_coeff__under_relaxation__water_flow_config(self, tmp_path):
         """xFail due to upstream (pyDeltaRCM) bug.
         """

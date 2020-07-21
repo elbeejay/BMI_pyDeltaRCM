@@ -8,7 +8,7 @@ from bmipy import Bmi
 import yaml
 
 from pyDeltaRCM.model import DeltaModel
-from pyDeltaRCM.shared_tools import write_yaml_config_to_file
+from pyDeltaRCM.preprocessor import write_yaml_config_to_file
 
 from . import utils
 
