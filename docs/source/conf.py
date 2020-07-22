@@ -13,17 +13,17 @@
 import os
 import sys
 
-import pyDeltaRCM
+import BMI_pyDeltaRCM
 
 # -- Project information -----------------------------------------------------
 
-project = 'pyDeltaRCM'
+project = 'BMI_pyDeltaRCM'
 copyright = '2020, The DeltaRCM Team'
 author = 'The DeltaRCM Team'
 
 # The full version, including alpha/beta/rc tags
-release = pyDeltaRCM.__version__
-version = pyDeltaRCM.__version__
+release = BMI_pyDeltaRCM.__version__
+version = BMI_pyDeltaRCM.__version__
 
 
 # -- General configuration ---------------------------------------------------
@@ -68,7 +68,7 @@ autodoc_default_flags = ['members', 'inherited-members', 'no-private-members']
 
 # doctest
 doctest_global_setup = '''
-import pyDeltaRCM
+import BMI_pyDeltaRCM
 import numpy as np
 from matplotlib import pyplot as plt
 '''
@@ -81,7 +81,7 @@ plot_formats = ['png', ('hires.png', 300)]
 plot_pre_code = '''
 import numpy as np
 from matplotlib import pyplot as plt
-import pyDeltaRCM
+import BMI_pyDeltaRCM
 '''
 
 

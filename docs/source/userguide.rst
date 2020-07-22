@@ -6,7 +6,7 @@ User Guide
 This is the BMI implementation of the pyDeltaRCM model.
 
 
-.. code::
+.. code:: python
     
     from BMI_pyDeltaRCM import BmiDelta
 
@@ -18,7 +18,7 @@ This is the BMI implementation of the pyDeltaRCM model.
 
 After you are finished with the model, you can clean up (save any outputs, release memory) with:
 
-.. code::
+.. code:: python
 
     delta.finalize()
 

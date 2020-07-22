@@ -4,7 +4,7 @@ BMI for PyDeltaRCM
 ##################
 
 Welcome to the documentation! 
-Here, you will find information for installing and using the `Basic Model Interface (BMI) <https://bmi.readthedocs.io/en/latest/?badge=latest>`_ implementation of the `pyDeltaRCM model <https://deltarcm.org/pyDeltaRCM_WMT/>`_.
+Here, you will find information for installing and using the `Basic Model Interface (BMI) <https://bmi.readthedocs.io/en/latest/?badge=latest>`_ implementation of the `pyDeltaRCM model <https://deltarcm.org/pyDeltaRCM/>`_.
 
 .. toctree::
    :maxdepth: 1
