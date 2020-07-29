@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>User Guide &#8212; BMI_pyDeltaRCM 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API and implementation notes" href="reference.html" />
+    <link rel="prev" title="Code of Conduct" href="meta/conduct.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="user-guide">
+<h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
+<p>This is the BMI implementation of the pyDeltaRCM model.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">BMI_pyDeltaRCM</span> <span class="kn">import</span> <span class="n">BmiDelta</span>
+
+<span class="n">delta</span> <span class="o">=</span> <span class="n">BmiDelta</span><span class="p">()</span>
+<span class="n">delta</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="s1">&#39;input_configuration.yml&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">delta</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>After you are finished with the model, you can clean up (save any outputs, release memory) with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">delta</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="input-arguments">
+<h2>Input Arguments<a class="headerlink" href="#input-arguments" title="Permalink to this headline">¶</a></h2>
+<p>The following CSDMS standard variable names are supported in an input YAML
+configuration file.</p>
+<ul class="simple">
+<li><p>‘model_output__out_dir’</p></li>
+<li><p>‘model_grid__length’</p></li>
+<li><p>‘model_grid__width’</p></li>
+<li><p>‘model_grid__cell_size’</p></li>
+<li><p>‘land_surface__width’</p></li>
+<li><p>‘land_surface__slope’</p></li>
+<li><p>‘model__max_iteration’</p></li>
+<li><p>‘water__number_parcels’</p></li>
+<li><p>‘channel__flow_velocity’</p></li>
+<li><p>‘channel__width’</p></li>
+<li><p>‘channel__flow_depth’</p></li>
+<li><p>‘sea_water_surface__mean_elevation’</p></li>
+<li><p>‘sea_water_surface__rate_change_elevation’</p></li>
+<li><p>‘sediment__number_parcels’</p></li>
+<li><p>‘sediment__bedload_fraction’</p></li>
+<li><p>‘sediment__influx_concentration’</p></li>
+<li><p>‘model_output__opt_eta_figs’</p></li>
+<li><p>‘model_output__opt_stage_figs’</p></li>
+<li><p>‘model_output__opt_depth_figs’</p></li>
+<li><p>‘model_output__opt_discharge_figs’</p></li>
+<li><p>‘model_output__opt_velocity_figs’</p></li>
+<li><p>‘model_output__opt_eta_grids’</p></li>
+<li><p>‘model_output__opt_stage_grids’</p></li>
+<li><p>‘model_output__opt_depth_grids’</p></li>
+<li><p>‘model_output__opt_discharge_grids’</p></li>
+<li><p>‘model_output__opt_velocity_grids’</p></li>
+<li><p>‘model_output__opt_time_interval’</p></li>
+<li><p>‘coeff__surface_smoothing’</p></li>
+<li><p>‘coeff__under_relaxation__water_surface’</p></li>
+<li><p>‘coeff__under_relaxation__water_flow’</p></li>
+<li><p>‘coeff__iterations_smoothing_algorithm’</p></li>
+<li><p>‘coeff__depth_dependence__water’</p></li>
+<li><p>‘coeff__depth_dependence__sand’</p></li>
+<li><p>‘coeff__depth_dependence__mud’</p></li>
+<li><p>‘coeff__non_linear_exp_sed_flux_flow_velocity’</p></li>
+<li><p>‘coeff__sedimentation_lag’</p></li>
+<li><p>‘coeff__velocity_deposition_mud’</p></li>
+<li><p>‘coeff__velocity_erosion_mud’</p></li>
+<li><p>‘coeff__velocity_erosion_sand’</p></li>
+<li><p>‘coeff__topographic_diffusion’</p></li>
+<li><p>‘basin__opt_subsidence’</p></li>
+<li><p>‘basin__maximum_subsidence_rate’</p></li>
+<li><p>‘basin__subsidence_start_timestep’</p></li>
+<li><p>‘basin__opt_stratigraphy’</p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">BMI_pyDeltaRCM</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="meta/installing.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta/contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meta/conduct.html">Code of Conduct</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">API and implementation notes</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="meta/conduct.html" title="previous chapter">Code of Conduct</a></li>
+      <li>Next: <a href="reference.html" title="next chapter">API and implementation notes</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, The DeltaRCM Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/userguide.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
