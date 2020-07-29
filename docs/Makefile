@@ -12,10 +12,10 @@ BUILDDIR      = build
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-.PHONY: help docs Makefile
+.PHONY: help docs clean Makefile
 
 
-docs: test clean html
+docs: test
 
 
 clean :
@@ -27,6 +27,7 @@ clean :
 test : clean
 	@$(SPHINXBUILD) -b doctest "$(SOURCEDIR)" "$(BUILDDIR)"
 	@$(SPHINXBUILD) -b linkcheck "$(SOURCEDIR)" "$(BUILDDIR)"
+	make clean
 	@$(SPHINXBUILD) -b html "$(SOURCEDIR)" "$(BUILDDIR)"
 
 
@@ -34,4 +35,3 @@ test : clean
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: clean Makefile 
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-

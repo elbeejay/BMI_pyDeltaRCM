@@ -2,7 +2,7 @@
 BMI_pyDeltaRCM
 **************
 
-.. image:: https://github.com/DeltaRCM/BMI_pyDeltaRCM/workflows/actions/badge.svg
+.. image:: https://github.com/DeltaRCM/BMI_pyDeltaRCM/workflows/build/badge.svg
     :target: https://github.com/DeltaRCM/BMI_pyDeltaRCM/actions
 
 .. image:: https://codecov.io/gh/DeltaRCM/BMI_pyDeltaRCM/branch/develop/graph/badge.svg

@@ -1,4 +1,4 @@
-# This workflow installs and tests pyDeltaRCM on mulitple python versions and operating systems.
+# This workflow installs and tests BMI_pyDeltaRCM on mulitple python versions and operating systems.
 
 name: build
 
@@ -64,12 +64,6 @@ jobs:
     - name: Build and test documentation
       run: |
         (cd docs && make docs)
-    - name: Upload log file
-      uses: actions/upload-artifact@v2
-      if: ${{ failure() }}
-      with:
-        name: log-file
-        path: docs/deltaRCM_Output/*.log
     - name: Debug
       run: |
         echo $REF
@@ -85,4 +79,4 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           REF: ${{ github.ref }}
           BRANCH: gh-pages
-          FOLDER: docs/build/html
+          FOLDER: docs/build
