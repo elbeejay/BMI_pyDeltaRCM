@@ -18,8 +18,6 @@ Documentation
 
 `Find the full documentation here <https://deltarcm.org/BMI_pyDeltaRCM/index.html>`_.
 
-
-
 Installation
 ############
 
@@ -41,4 +39,12 @@ Or for a developer installation run:
 Executing the model
 ###################
 
-todo
+The below code provides the most basic method for initializing and running
+the pyDeltaRCM model using the BMI interface.
+
+.. code:: python
+
+    from BMI_pyDeltaRCM.bmidelta import BmiDelta
+    delta = BmiDelta()  # instantiate model
+    delta.initialize()  # initialize model
+    delta.update()  # update model
