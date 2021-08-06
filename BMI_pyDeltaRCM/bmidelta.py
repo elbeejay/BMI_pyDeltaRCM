@@ -8,7 +8,8 @@ from bmipy import Bmi
 import yaml
 
 from pyDeltaRCM.model import DeltaModel
-from pyDeltaRCM.preprocessor import write_yaml_config_to_file
+from pyDeltaRCM.preprocessor import _write_yaml_config_to_file \
+    as write_yaml_config_to_file
 
 from . import utils
 
@@ -511,7 +512,7 @@ class BmiDelta(Bmi):
     def get_grid_x(self, grid: int) -> np.ndarray:
         """Get coordinates of grid nodes in the x direction.
 
-        .. hint:: 
+        .. hint::
             Internally, the pyDeltaRCM model refers to the down-stream
             direction as `x`, which is the row-coordinate of the grid, and
             opposite the BMI specification.
@@ -534,7 +535,7 @@ class BmiDelta(Bmi):
     def get_grid_y(self, grid: int) -> np.ndarray:
         """Get coordinates of grid nodes in the y direction.
 
-        .. hint:: 
+        .. hint::
             Internally, the pyDeltaRCM model refers to the cross-stream
             direction as `y`, which is the column-coordinate of the grid, and
             opposite the BMI specification.
