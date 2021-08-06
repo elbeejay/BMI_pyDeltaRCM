@@ -498,8 +498,6 @@ class TestBmiOperations:
         delta.update_until(2)
         assert delta._delta._time == 2.
 
-    @pytest.mark.xfail(raises=ValueError, strict=False,
-                       reason="Recalculation of Np_water on timestep change causes break. Upstream error.")
     def test_update_frac(self, tmp_path):
         filename = 'user_parameters.yaml'
         p, f = create_temporary_file(tmp_path, filename)
@@ -507,7 +505,6 @@ class TestBmiOperations:
         f.close()
         delta = BmiDelta()
         delta.initialize(p)
-        # with pytest.warns(UserWarning):
         delta.update_frac(0.2)
         assert delta._delta.time_step == 25000.0
 
@@ -714,8 +711,6 @@ class TestBmiApiReqts:
         delta.initialize(p)
         assert delta.get_end_time() == pytest.approx(np.finfo('d').max)
 
-    @pytest.mark.xfail(raises=AttributeError, strict=False,
-                       reason='Upstream changes needed to make time public')
     def test_get_current_time(self, tmp_path):
         filename = 'user_parameters.yml'
         p, f = create_temporary_file(tmp_path, filename)
