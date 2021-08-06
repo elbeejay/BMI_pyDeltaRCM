@@ -78,7 +78,7 @@ class BmiDelta(Bmi):
         'coeff__velocity_erosion_sand': 'coeff_U_ero_sand',
         'coeff__topographic_diffusion': 'alpha',
         'basin__opt_subsidence': 'toggle_subsidence',
-        'basin__maximum_subsidence_rate': 'sigma_max',
+        'basin__maximum_subsidence_rate': 'subsidence_rate',
         'basin__subsidence_start_timestep': 'start_subsidence',
         'basin__opt_stratigraphy': 'save_strata'
     }
