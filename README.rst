@@ -39,7 +39,7 @@ Or for a developer installation run:
 Executing the model
 ###################
 
-The below code provides the most basic method for initializing and running
+The below code provides the simplest method for initializing and running
 the pyDeltaRCM model using the BMI interface.
 
 .. code:: python
