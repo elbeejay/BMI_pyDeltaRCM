@@ -31,7 +31,7 @@ class TestBmiInputParameters:
         delta.initialize(p)
         assert delta._delta.h0 == 5.0
         assert delta._delta.u0 == 1.0
-        assert delta._delta.S0 == 0.0002
+        assert delta._delta.S0 == 0.00015
 
     def test_set_model_output__out_dir_config(self, tmp_path):
         filename = 'user_parameters.yaml'
@@ -462,7 +462,7 @@ class TestBmiInputParameters:
         f.close()
         delta = BmiDelta()
         delta.initialize(p)
-        assert delta._delta.sigma_max == 0.00033
+        assert delta._delta.subsidence_rate == 0.00033
 
     def test_set_basin__subsidence_start_timestep_config(self, tmp_path):
         filename = 'user_parameters.yaml'
@@ -473,16 +473,6 @@ class TestBmiInputParameters:
         delta = BmiDelta()
         delta.initialize(p)
         assert delta._delta.start_subsidence == 10
-
-    def test_set_basin__opt_stratigraphy_config(self, tmp_path):
-        filename = 'user_parameters.yaml'
-        p, f = create_temporary_file(tmp_path, filename)
-        write_parameter_to_file(f, 'basin__opt_stratigraphy', True)
-        write_parameter_to_file(f, 'model_output__out_dir', tmp_path / 'out_dir')
-        f.close()
-        delta = BmiDelta()
-        delta.initialize(p)
-        assert delta._delta.save_strata is True
 
 
 class TestBmiOperations:
@@ -495,7 +485,7 @@ class TestBmiOperations:
         delta = BmiDelta()
         delta.initialize(p)
         delta.update()
-        assert delta._delta._time == 1
+        assert delta._delta._time == 25000.0
 
     def test_update_until(self, tmp_path):
         filename = 'user_parameters.yaml'
@@ -508,8 +498,6 @@ class TestBmiOperations:
         delta.update_until(2)
         assert delta._delta._time == 2.
 
-    @pytest.mark.xfail(raises=ValueError, strict=True,
-                       reason="Recalcualtion of Np_water on timestep change causes break. Upstream error.")
     def test_update_frac(self, tmp_path):
         filename = 'user_parameters.yaml'
         p, f = create_temporary_file(tmp_path, filename)
@@ -517,9 +505,8 @@ class TestBmiOperations:
         f.close()
         delta = BmiDelta()
         delta.initialize(p)
-        with pytest.warns(UserWarning):
-            delta.update_frac(0.2)
-        assert delta._delta.time_step == 1.0
+        delta.update_frac(0.2)
+        assert delta._delta.time_step == 25000.0
 
 
 class TestBmiApiReqts:
@@ -606,7 +593,7 @@ class TestBmiApiReqts:
         delta.initialize(p)
         _id = delta.get_var_grid('sea_water_surface__elevation')
         assert delta.get_grid_rank(_id) == 2
-        
+
     def test_get_grid_size(self, tmp_path):
         filename = 'user_parameters.yml'
         p, f = create_temporary_file(tmp_path, filename)
@@ -626,7 +613,7 @@ class TestBmiApiReqts:
         delta.initialize(p)
         assert np.all(delta.get_value('sea_water_surface__elevation') == delta._delta.stage)
         # make sure a copy is returned
-        assert delta.get_value('sea_water_surface__elevation') is not delta._delta.stage 
+        assert delta.get_value('sea_water_surface__elevation') is not delta._delta.stage
 
     def test_get_value_at_indices(self, tmp_path):
         filename = 'user_parameters.yml'
@@ -724,8 +711,6 @@ class TestBmiApiReqts:
         delta.initialize(p)
         assert delta.get_end_time() == pytest.approx(np.finfo('d').max)
 
-    @pytest.mark.xfail(raises=AttributeError, strict=True,
-                       reason='Upstream changes needed to make time public')
     def test_get_current_time(self, tmp_path):
         filename = 'user_parameters.yml'
         p, f = create_temporary_file(tmp_path, filename)
