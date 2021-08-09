@@ -10,8 +10,6 @@ BMI_pyDeltaRCM
 
 Basic Modeling Interface (BMI) wrapper to the pyDeltaRCM model.
 
-**NOTE:** this project is in alpha testing. It is incomplete, unstable, and untested.
-
 
 Documentation
 #############
@@ -23,22 +21,26 @@ Documentation
 Installation
 ############
 
-**While project is in alpha:** You will need to install `pyDeltaRCM` first, visit that repository and follow installation instructions there.
+.. important::
+
+    If you intend to manipulate the underlying *pyDeltaRCM* code in any way, be sure to follow the `Developer Installation instructions <https://deltarcm.org/pyDeltaRCM/meta/installing.html#developer-installation>`_ from that project before installing the BMI wrapper.
 
 To install this package into an existing Python 3.x environment, download or clone the repository and run:
 
 .. code:: bash
 
+    $ pip install -r requirements.txt
     $ python setup.py install
 
 Or for a developer installation run:
 
 .. code:: bash
 
+    $ pip install -r requirements.txt
     $ pip install -e .
 
 
 Executing the model
 ###################
 
-todo
+See the `BMI_pyDeltaRCM USer Guide <https://deltarcm.org/BMI_pyDeltaRCM/userguide.html>`_.
