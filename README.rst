@@ -19,7 +19,7 @@ Documentation
 Installation
 ############
 
-.. important::
+**Note:**
 
     If you intend to manipulate the underlying *pyDeltaRCM* code in any way, be sure to follow the `Developer Installation instructions <https://deltarcm.org/pyDeltaRCM/meta/installing.html#developer-installation>`_ from that project before installing the BMI wrapper.
 
@@ -51,4 +51,4 @@ the pyDeltaRCM model using the BMI interface.
     delta.initialize()  # initialize model
     delta.update()  # update model
 
-See the `BMI_pyDeltaRCM USer Guide <https://deltarcm.org/BMI_pyDeltaRCM/userguide.html>`_.
+See the `BMI_pyDeltaRCM User Guide <https://deltarcm.org/BMI_pyDeltaRCM/userguide.html>`_.
