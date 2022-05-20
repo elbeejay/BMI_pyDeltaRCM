@@ -1,7 +1,6 @@
 import pytest
-
 import numpy as np
-
+from bmipy import Bmi
 from BMI_pyDeltaRCM import BmiDelta
 
 
@@ -19,6 +18,11 @@ def write_parameter_to_file(f, varname, varvalue):
 
 
 # TESTS #
+def test_bmi_implemented():
+    """Test based on the same name test in the CSDMS/bmi-python repo."""
+    assert isinstance(BmiDelta(), Bmi)
+    
+
 class TestBmiInputParameters:
     """Tests associated with the input parameters of the BMI"""
 
